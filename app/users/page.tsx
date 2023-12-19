@@ -16,6 +16,8 @@ export default async function UsersPage() {
 
     const users = await usersData;
 
+    console.log('Server component!');
+
     const content = (
         <section>
             <h2>
