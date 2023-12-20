@@ -5,6 +5,7 @@ import { Suspense } from 'react'
 import UserPosts from './components/UserPosts'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import getAllUsers from '@/lib/getAllUsers'
 
 type Params = {
     params: {
@@ -44,4 +45,16 @@ export default async function UserPage({ params: { userId }}: Params) {
             </Suspense>
         </>
     )
+}
+
+export async function generateStaticParams() {
+    const usersData: Promise<User[]> = getAllUsers()
+    // await lexically pauses execution
+    const users = await usersData
+
+    return users.map( user => ({
+        // syntax auto returns
+        userId: user.id.toString()
+        // have to set page parameters as strings
+    }));
 }
