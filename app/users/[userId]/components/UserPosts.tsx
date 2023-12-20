@@ -2,7 +2,6 @@ type Props = {
     promise: Promise<Post[]>
 }
 
-import React from 'react'
 
 export default async function UserPosts({promise}: Props) {
     const posts = await promise
@@ -15,9 +14,5 @@ export default async function UserPosts({promise}: Props) {
             </article>
         )
     })
-    return (
-    <div>
-      
-    </div>
-  )
+    return content;
 }
